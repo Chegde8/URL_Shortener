@@ -1,0 +1,32 @@
+sudo docker pull mcr.microsoft.com/mssql/server:2022-latest
+sudo docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=SqlPassword.2024' -p 1433:1433 --name url_db -d mcr.microsoft.com/mssql/server:2022-latest
+
+sudo docker exec -it url_db bash
+
+
+
+# install pyodbc
+pip install pyodbc
+
+# install odbc driver
+sudo apt-get install curl apt-transport-https
+curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
+sudo apt-get update
+sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18
+odbcinst -j
+
+/opt/mssql-tools18/bin/sqlcmd -S localhost -U SA -P "SqlPassword.2024" -C
+
+
+# show databases
+SELECT name FROM master.sys.databases;
+GO;
+
+
+
+# curl requests to server
+curl -X POST -H "Content-Type: application/json" -d '{"original_url":"http://www.short.com"}' http://localhost:5000/shorten
+http://shorten.url/GJ7fXl
+
+curl -X POST -H "Content-Type: application/json" -d '{"short_url":"http://shorten.url/GJ7fXl"}' http://localhost:5000/expand
