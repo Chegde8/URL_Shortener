@@ -7,13 +7,13 @@ This repository contains code for a simple Python based URL shortening service. 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/url-shortening-service.git
+   git clone https://github.com/Chegde8/URL_Shortener.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd url-shortening-service
+   cd URL_Shortener/url-shortening-service
    ```
 
 3. Install the required packages:
