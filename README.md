@@ -2,6 +2,8 @@
 
 This repository contains code for a simple Python based URL shortening service. The steps to run the service are provided below. An explanation of the design and deployment considerations are provided after the instructions.
 
+Please ensure that you have Python and Docker installed on your system prior to following the below steps.
+
 ## Installation and demo instrcutions
 
 1. Clone the repository:
